@@ -62,7 +62,7 @@ gulp.task('concatCss', () => {
 });
 
 gulp.task('clearFolders', () => {
-    return del(['./src/toCompile', './src/css']);
+    return del(['./src/toCompile', './src/css', './src/styles/variables/**/*.scss']);
 });
 
 gulp.task('build', () => {
