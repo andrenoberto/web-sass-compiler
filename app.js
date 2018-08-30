@@ -10,6 +10,7 @@ const cssRouter = require('./routes/css');
 const app = express();
 
 app.use(logger('dev'));
+app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());

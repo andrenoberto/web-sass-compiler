@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
 const del = require('del');
+const shell = require('gulp-shell')
 const runSequence = require('run-sequence').use(gulp);
 
 /**
@@ -58,15 +59,17 @@ gulp.task('sass', () => {
 gulp.task('concatCss', () => {
     return gulp.src('./src/css/**/*.css')
         .pipe(concat('exchange.css'))
-        .pipe(gulp.dest('./src/dist'));
+        .pipe(gulp.dest('./public/css'));
 });
 
 gulp.task('clearFolders', () => {
     return del(['./src/toCompile', './src/css', './src/styles/variables/**/*.scss']);
 });
 
+gulp.task('compileApp', shell.task('cd angular && npm run build'));
+
 gulp.task('build', () => {
-    runSequence('copyStyles', 'concat', 'sass', 'concatCss', 'clearFolders')
+    runSequence(/* 'copyStyles', 'concat', 'sass', 'concatCss', 'clearFolders',  */'compileApp')
 });
 
 /**

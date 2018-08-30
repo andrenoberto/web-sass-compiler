@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs');
 
 const writeFile = (fileName, data) => {
-    const filePath = path.join(process.cwd(), `src/styles/variables/_${fileName}.scss`);
+    const filePath = path.join(process.cwd(), `angular/src/styles/variables/_${fileName}.scss`);
     fs.writeFileSync(filePath, '');
     if (data.imports) {
         for (let i in data.imports) {
